@@ -5,25 +5,26 @@ library(ggmap)
 library(markdown)
 
 shinyUI(navbarPage(title = "R User Groups Around the World",
-                   
+
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                    ## HTML Layout Settings
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                   
+
                    ## Use a customized bootstrap theme
                    theme = 'bootstrap.css',
                    collapsable = TRUE,
-                   
+
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                    ## Tab "About"
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                                      
-                   tabPanel("About", includeMarkdown("doc/intro.md")),
-                   
+
+                   #tabPanel("About", includeMarkdown("doc/intro.md")),
+                   tabPanel("About", includeMarkdown("doc/index.md")),
+
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                    ## Tab "Maps"
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                                      
+
                    navbarMenu("Maps",
                               tabPanel("All R User Groups (140)",
                                        tags$style('.leaflet {height: 600px;}'),
@@ -69,14 +70,14 @@ shinyUI(navbarPage(title = "R User Groups Around the World",
                               tabPanel("United Kingdom (8)",
                                        tags$style('.leaflet {height: 600px;}'),
                                        showOutput('map_uk', 'leaflet'))
-                              
+
                    ),
-                   
+
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                    ## Tab "Data"
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                   
-                   navbarMenu("Data", 
+
+                   navbarMenu("Data",
                               tabPanel("Data (Original)",
                                        HTML("<h3>Original RUGs Data from Revolution Analytics</h3>"),
                                        downloadButton('dl_ori', 'Download CSV'),
@@ -90,12 +91,12 @@ shinyUI(navbarPage(title = "R User Groups Around the World",
                                        dataTableOutput("data_modified")
                               )
                    ),
-                   
+
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                    ## Tab "More"
                    ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                   
-                   navbarMenu("More", 
+
+                   navbarMenu("More",
                               tabPanel("Code", includeMarkdown("doc/code.md")),
                               tabPanel("Contact", includeMarkdown("doc/contact.md"))
                    )
